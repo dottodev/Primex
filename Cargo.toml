@@ -1,0 +1,36 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/pdx-core",
+    "crates/pdx-apk",
+    "crates/pdx-cli",
+    "crates/pdx-jni",
+    "crates/pdx-term",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.76"
+license = "Apache-2.0"
+publish = false
+repository = "https://github.com/dottodev/Primex"
+
+[workspace.dependencies]
+pdx-core = { path = "crates/pdx-core" }
+pdx-apk = { path = "crates/pdx-apk" }
+pdx-term = { path = "crates/pdx-term" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+clap = { version = "4.5", features = ["derive"] }
+crc32fast = "1.4"
+flate2 = "1.0"
+libc = "0.2"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+strip = true

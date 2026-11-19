@@ -1,0 +1,17 @@
+[package]
+name = "pdx-jni"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+name = "pdx_jni"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+pdx-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+jni = "0.21"

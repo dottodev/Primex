@@ -1,0 +1,25 @@
+[versions]
+# AGP 8.10.1 supports compileSdk 35 (cached locally). Kotlin 2.4.20 is the
+# stdlib version required by Miuix 0.9.4 and Compose Multiplatform 1.12.0.
+agp = "9.5.1"
+kotlin = "2.4.21"
+compose = "1.12.0"
+miuix = "0.9.4"
+core-ktx = "1.13.1"
+lifecycle-runtime-ktx = "2.8.7"
+activity-compose = "1.10.1"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+# Compose Multiplatform Android AARs delegate to androidx.compose.* of the same
+# version (verified in org.jetbrains.compose.foundation:foundation-android 1.12.0),
+# so these are the same artifacts Miuix itself is built on. No Material 3.
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "compose" }
+miuix-ui = { group = "top.yukonga.miuix.kmp", name = "miuix-ui-android", version.ref = "miuix" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

@@ -1,0 +1,56 @@
+# Rust build output
+/target/
+**/target/
+*.rlib
+*.rmeta
+
+# Cargo local config / vendored state
+.cargo/
+Cargo.lock.bak
+
+# Gradle / Android build output
+.gradle/
+build/
+**/build/
+local.properties
+.gradle.kts/
+*.iml
+.idea/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Android artifacts (never commit signing material)
+*.apk
+*.aab
+*.ap_
+*.dex
+*.so
+# Test fixtures and the built native bridge are required for a fresh checkout
+# to build and pass tests.
+!fixtures/*.apk
+!app/src/main/jniLibs/**/*.so
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.pepk
+*.apks
+debug.keystore
+release.keystore
+signing.properties
+keystore.properties
+
+# Generated / tool state
+.pdxcache/
+*.pdxlog
+*.pdxjob
+.venv/
+__pycache__/
+*.pyc
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
