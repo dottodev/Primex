@@ -7,7 +7,6 @@
 **Developer Tools · offline-first Android IDE & reverse-engineering workbench**
 
 <p>
-<img src="https://img.shields.io/badge/label-mc1h-7C3AED?style=for-the-badge" alt="mc1h" />
 <img src="https://img.shields.io/badge/package-dev.primex.dt-232F3E?style=for-the-badge" alt="package" />
 <img src="https://img.shields.io/badge/Android-minSdk%2026-3DDC84?style=for-the-badge" alt="minSdk" />
 <img src="https://img.shields.io/badge/license-Apache--2.0-blue?style=for-the-badge" alt="license" />
