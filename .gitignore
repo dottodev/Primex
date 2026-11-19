@@ -16,6 +16,7 @@ local.properties
 .gradle.kts/
 *.iml
 .idea/
+.kotlin/
 captures/
 .externalNativeBuild/
 .cxx/

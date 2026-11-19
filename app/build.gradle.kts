@@ -3,6 +3,13 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+// Release signing material is supplied by the operator through the environment.
+// No keystore, password or signing config is stored in the repository.
+val releaseKeystore = System.getenv("PDX_KEYSTORE")
+val releaseStorePassword = System.getenv("PDX_STORE_PASSWORD")
+val releaseKeyAlias = System.getenv("PDX_KEY_ALIAS") ?: "primex"
+val releaseKeyPassword = System.getenv("PDX_KEY_PASSWORD") ?: releaseStorePassword
+
 android {
     namespace = "dev.primex.dt"
     // Miuix 0.9.x AARs declare minCompileSdk=37 (verified from the published
@@ -30,9 +37,23 @@ android {
     // separately by the Cargo side and the resulting .so files are copied into
     // app/src/main/jniLibs/<abi>/ later. CommandBus loads "pdx_jni" at runtime.
 
+    signingConfigs {
+        if (!releaseKeystore.isNullOrBlank() && !releaseStorePassword.isNullOrBlank()) {
+            create("release") {
+                storeFile = file(releaseKeystore!!)
+                storePassword = releaseStorePassword
+                keyAlias = releaseKeyAlias
+                keyPassword = releaseKeyPassword
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
+            if (signingConfigs.findByName("release") != null) {
+                signingConfig = signingConfigs.getByName("release")
+            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
