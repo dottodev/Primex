@@ -23,6 +23,9 @@ expected and is not a failure of the current milestone.
 | H12 | Gradle debug build | `./gradlew :app:assembleDebug` | **PASS** — `app-debug.apk`, 11,680,062 bytes, `BUILD SUCCESSFUL in 1m 21s` |
 | H13 | Android NDK native bridge | `cargo ndk -t arm64-v8a -t x86_64 -o app/src/main/jniLibs build --release -p pdx-jni` | **PASS** — both `.so` produced; `llvm-nm -D` shows `Java_dev_primex_dt_jni_CommandBus_nativeSend` |
 | H14 | APK manifest + packaged libs | `aapt2 dump badging` + Python zip listing | **PASS** — `dev.primex.dt`, minSdk 26, targetSdk 35, label `PrimeX D.T`, `lib/{arm64-v8a,x86_64}/libpdx_jni.so` present |
+| H15 | Locked workspace tests | `cargo test --locked --workspace` | **PASS** — all 9 test binaries report `test result: ok` |
+| H16 | Unix PTY compiles for Android | `cargo ndk -t arm64-v8a check -p pdx-term` (NDK 27) | **PASS** — after declaring bionic `environ` explicitly (the `libc` crate omits it on Android). Not run on a device. |
+| H17 | No Material 3 in UI code | source search for `androidx.compose.material3` under `app/src` | **PASS** — zero matches |
 
 Note on H12: the checkout is under OneDrive; Gradle once failed with
 `AccessDeniedException` inside `app/build`. Removing `app/build` and rebuilding
