@@ -66,6 +66,24 @@ cargo ndk -t arm64-v8a -t x86_64 -o app/src/main/jniLibs build --release -p pdx-
 `package='dev.primex.dt'`, `versionCode='1'`, `versionName='0.1.0'`,
 `minSdkVersion='26'`, `targetSdkVersion='35'`, `application-label='PrimeX D.T'`.
 
+## Release signing and published artifact
+
+Release signing material is **never stored in the repo**. The `release` build
+type signs only when these environment variables are present:
+
+```
+PDX_KEYSTORE        absolute path to a .jks/.keystore
+PDX_STORE_PASSWORD  keystore password
+PDX_KEY_ALIAS       key alias (default: primex)
+PDX_KEY_PASSWORD    key password (defaults to the store password)
+```
+
+Published release: [v0.1.0-m0](https://github.com/dottodev/Primex/releases/tag/v0.1.0-m0).
+It is signed with a local development certificate (SHA-256 fingerprint
+`4F:6D:FE:99:CA:A9:5C:71:32:51:FF:3E:87:99:D5:A1:5B:23:AD:2A:DA:F1:FC:E3:DB:A8:66:4E:34:7A:9A:37`)
+and cannot update over an official install. APK SHA-256:
+`08b5ae43856f3c384998c30267be23792b35869cca47e1280a98f3eadb72f501`.
+
 ## OneDrive build-directory caveat
 
 The checkout lives under OneDrive, and Gradle occasionally hit

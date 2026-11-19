@@ -22,6 +22,8 @@
 
 <sub>Made for people who ship modified builds and need to know **why they break**.</sub>
 
+**⬇️ [Download the latest APK](https://github.com/dottodev/Primex/releases/latest)** · signed with a local development key, not the official signer.
+
 </div>
 
 ---
